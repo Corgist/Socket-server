@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易Web框架</title>
+    <script language="javascript">
+        var t = null;
+        t = setTimeout(time,1000);//开始执行
+        function time()
+        {
+            clearTimeout(t);//清除定时器
+            dt = new Date();
+            var y=dt.getYear()+1900;
+            var mm=dt.getMonth()+1;
+            var d=dt.getDate();
+            var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            var day=dt.getDay();
+            var h=dt.getHours();
+            var m=dt.getMinutes();
+            var s=dt.getSeconds();
+            var ampm;
+            if(h<10){h="0"+h;}
+            if(m<10){m="0"+m;}
+            if(s<10){s="0"+s;}
+            if(h<12){ampm='上午'}
+            if(h>=12){ampm='下午'}
+            document.getElementById("timeShow").innerHTML =  "当前时间："+y+"年"+mm+"月"+d+"日"+ampm+""+h+":"+m+":"+s+"";
+            t = setTimeout(time,1000); //设定定时器，循环执行
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello {{username}}</h1>
+    <h2><span id="timeShow"></span></h2>
+    <a href="/user/register/view">Register</a>
+    <a href="/user/login/view">Login</a>
+    <a href="/todo/index">Todo</a>
+    <a href="/todo/ajax/index">TodoAjax</a>
+    <a href="/weibo/index">Weibo</a>
+    <div><img src="/static?file=318x450.gif"/></div>
+</body>
+</html>
